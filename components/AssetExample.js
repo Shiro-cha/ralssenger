@@ -1,13 +1,26 @@
 import * as React from 'react';
 import { Text, View, StyleSheet, Button } from 'react-native';
+import Constants from 'expo-constants';
 
-export default function AssetExample() {
+export default function AssetExample({setPageToDisplay}) {
+
+
+  function handlePress(evt){
+    setPageToDisplay(
+      <View style={styles.containerParent}>
+      <Text style={styles.paragraph}>
+        Hello world
+      </Text>
+      </View>
+      )
+  }
   return (
     <View style={styles.container}>
       <Text style={styles.paragraph}>
         Vous pouvez commencer à discuter directement :p
       </Text>
       <Button
+      onPress={handlePress}
       title="Commencez"
       color="#841584"
       accessibilityLabel="Learn more about this purple button"
@@ -19,8 +32,15 @@ export default function AssetExample() {
 const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'center', 
     padding: 24,
+  },
+  containerParent: {
+    flex: 1,
+    justifyContent: 'center',
+    paddingTop: Constants.statusBarHeight,
+    backgroundColor: '#ecf0f1',
+    padding: 8,
   },
   paragraph: {
     margin: 24,
