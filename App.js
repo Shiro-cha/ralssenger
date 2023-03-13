@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import {useState,useEffect} from 'react';
 import { Text, View, StyleSheet } from 'react-native';
 import Constants from 'expo-constants';
 
@@ -8,7 +8,7 @@ import AssetExample from './components/AssetExample';
 // or any pure javascript modules available in npm
 import { Card } from 'react-native-paper';
 
-const WelcomPage = () =>{
+const WelcomPage = ({setPageToDisplay}) =>{
 
   return (
     <View style={styles.container}>
@@ -16,7 +16,7 @@ const WelcomPage = () =>{
         Bienvenu sur <Text style={styles.logo}>Ral'ssenger</Text>.
       </Text>
       <Card>
-        <AssetExample />
+        <AssetExample setPageToDisplay={setPageToDisplay} />
       </Card>
     </View>
   );
@@ -25,7 +25,14 @@ const WelcomPage = () =>{
 export default function App() {
 
 
-const [pageToDisplay,setPageToDisplay] = useState(<WelcomPage/>)
+const [pageToDisplay,setPageToDisplay] = useState("")
+
+
+useEffect(()=>{
+
+  setPageToDisplay(<WelcomPage setPageToDisplay={setPageToDisplay}/>)
+
+},[]);
 
   return (
     <>
