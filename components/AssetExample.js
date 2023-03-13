@@ -5,9 +5,13 @@ export default function AssetExample() {
   return (
     <View style={styles.container}>
       <Text style={styles.paragraph}>
-        Vous pouvez commencer à chater directement ici :p
+        Vous pouvez commencer à discuter directement :p
       </Text>
-      <Button title="Commencez à discuter" />
+      <Button
+      title="Commencez"
+      color="#841584"
+      accessibilityLabel="Learn more about this purple button"
+/>
     </View>
   );
 }
@@ -22,8 +26,9 @@ const styles = StyleSheet.create({
     margin: 24,
     marginTop: 0,
     fontSize: 14,
-    fontWeight: 'bold',
+    fontWeight: 'normal',
     textAlign: 'center',
+    color:"#333333"
   },
   logo: {
     height: 128,
