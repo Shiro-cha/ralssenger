@@ -1,4 +1,4 @@
-import * as React from 'react';
+import {useState} from 'react';
 import { Text, View, StyleSheet } from 'react-native';
 import Constants from 'expo-constants';
 
@@ -8,7 +8,8 @@ import AssetExample from './components/AssetExample';
 // or any pure javascript modules available in npm
 import { Card } from 'react-native-paper';
 
-export default function App() {
+const WelcomPage = () =>{
+
   return (
     <View style={styles.container}>
       <Text style={styles.paragraph}>
@@ -18,6 +19,18 @@ export default function App() {
         <AssetExample />
       </Card>
     </View>
+  );
+}
+
+export default function App() {
+
+
+const [pageToDisplay,setPageToDisplay] = useState(<WelcomPage/>)
+
+  return (
+    <>
+      {pageToDisplay}
+    </>
   );
 }
 
@@ -34,6 +47,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: 'bold',
     textAlign: 'center',
+    color:"#333333"
   },
   logo:{
     color:"#841584"
