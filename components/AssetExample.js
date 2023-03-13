@@ -2,23 +2,21 @@ import * as React from 'react';
 import { Text, View, StyleSheet, Button } from 'react-native';
 import Constants from 'expo-constants';
 
+import MessageContainer from './MessageContainer';
+
 export default function AssetExample({setPageToDisplay}) {
 
 
   function handlePress(evt){
     setPageToDisplay(
-      <View style={styles.containerParent}>
-      <Text style={styles.paragraph}>
-        Hello world
-      </Text>
-      </View>
+      <MessageContainer/>
       )
   }
   return (
     <View style={styles.container}>
       <Text style={styles.paragraph}>
         Vous pouvez commencer à discuter directement :p
-      </Text>
+      </Text> 
       <Button
       onPress={handlePress}
       title="Commencez"
