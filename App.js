@@ -12,7 +12,7 @@ export default function App() {
   return (
     <View style={styles.container}>
       <Text style={styles.paragraph}>
-        Bienvenu sur Ral'ssenger.
+        Bienvenu sur <Text style={styles.logo}>Ral'ssenger</Text>.
       </Text>
       <Card>
         <AssetExample />
@@ -35,4 +35,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     textAlign: 'center',
   },
+  logo:{
+    color:"#841584"
+  }
 });
