@@ -1,9 +1,12 @@
 import React, { useState , useRef } from 'react';
 import { View, Text, TextInput, FlatList, StyleSheet } from 'react-native';
+import UserSelector from './userSelector';
 
 const MessageContainer = () => {
   const [messages, setMessages] = useState([]);
   const inputRef = useRef(null);
+
+  const [user,setUser] = useState('Shiro');
 
   const handleSend = (text) => {
     const newMessage = { id: messages.length + 1, text: `${text} ral` };
@@ -15,11 +18,19 @@ const MessageContainer = () => {
 
   return (
     <View style={styles.container}>
+    <UserSelector setUser={setUser}/>
       <FlatList
         data={messages}
         renderItem={({ item }) => (
-          <View style={styles.message}>
-            <Text>{item.text}</Text>
+          <View style={{
+    padding: 10,
+    marginVertical: 5,
+    backgroundColor: user==="Shiro"?'#3243D3':'#eee',
+    borderRadius: 10,
+  }}>
+            <Text style={{
+              color:user==="Shiro"?'#fff':'#333'
+            }}>{item.text}</Text>
           </View>
         )}
         keyExtractor={(item) => item.id.toString()}
@@ -40,14 +51,9 @@ const MessageContainer = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding:50
+    padding:30
   },
-  message: {
-    padding: 10,
-    marginVertical: 5,
-    backgroundColor: '#eee',
-    borderRadius: 10,
-  },
+ 
   inputContainer: {
     flexDirection: 'row',
     alignItems: 'center',
